@@ -25,7 +25,9 @@ SECRET_KEY = 'qchgib49pw83^7x82&c6kb8h&)14rct4*1ffq=_tvbw6jhmw4l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'sandpiturtle.pythonanywhere.com'
+]
 
 
 # Application definition
