@@ -92,3 +92,6 @@ ENV/
 
 # Uploaded files
 media/
+
+# Sqlite
+db.sqlite3
