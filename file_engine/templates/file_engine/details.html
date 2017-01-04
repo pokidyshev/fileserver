@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <p><a href="{% url 'home' %}">Return to home</a></p>
+
+  <p>Description: {{ obj.description }}</p>
+  <p>Uploaded at: {{ obj.uploaded_at }}</p>
+  <a href="{{ obj.document.url }}">Download</a>
+  <p>Preview: </p>
+{% endblock %}
