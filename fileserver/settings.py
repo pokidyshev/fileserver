@@ -26,7 +26,8 @@ SECRET_KEY = 'qchgib49pw83^7x82&c6kb8h&)14rct4*1ffq=_tvbw6jhmw4l'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'sandpiturtle.pythonanywhere.com'
+    'sandpiturtle.pythonanywhere.com',
+    '127.0.0.1'
 ]
 
 
