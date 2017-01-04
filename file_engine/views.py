@@ -7,13 +7,6 @@ from .forms import DocumentForm
 from .encoding import encode, decode
 
 
-def home(request):
-    documents = Document.objects.all()
-    return render(request, 'file_engine/home.html', {
-        'documents': documents,
-    })
-
-
 def upload(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)

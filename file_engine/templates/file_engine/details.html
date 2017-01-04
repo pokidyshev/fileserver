@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <p><a href="{% url 'home' %}">Return to home</a></p>
-
+  <p><a href="{% url 'upload' %}">Upload new file</a></p>
   <p>Description: {{ obj.description }}</p>
   <p>Uploaded at: {{ obj.uploaded_at }}</p>
   <a href="/download/{{ encoded_id }}">Download</a>
-  <p>Preview: </p>
 {% endblock %}
