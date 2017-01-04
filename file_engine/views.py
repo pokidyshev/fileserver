@@ -1,7 +1,6 @@
 import os
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, Http404
-from django.conf import settings
 
 from .models import Document
 from .forms import DocumentForm
@@ -41,14 +40,14 @@ def details(request):
 def download(request):
     encoded_id = request.path.split('/')[-1]
     obj = get_object_or_404(Document, pk=decode(encoded_id))
-    file_path = os.path.join(settings.MEDIA_ROOT, obj.document.name)
+    file_path = obj.document.path
 
     if not os.path.exists(file_path):
         raise Http404
 
-    with open(file_path, 'rb') as fh:
+    with open(file_path, 'rb') as fp:
         response = HttpResponse(
-            fh.read(),
+            fp.read(),
             content_type='application/force-download'
         )
         response['Content-Disposition'] = ('inline; filename=' +
