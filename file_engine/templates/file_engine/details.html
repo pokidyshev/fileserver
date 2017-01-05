@@ -3,6 +3,16 @@
 {% block content %}
   <p><a href="{% url 'upload' %}">Upload new file</a></p>
   <p>Description: {{ obj.description }}</p>
+  <p>Content type: {{ obj.content_type }}</p>
   <p>Uploaded at: {{ obj.uploaded_at }}</p>
-  <a href="/download/{{ encoded_id }}">Download</a>
+  <p>Destruction at: {{ obj.destruction_at }}</p>
+  <p><a href="/download/{{ encoded_id }}">Download</a></p>
+  <details>
+    <summary>Content</summary>
+    {% if obj.content == 'image' %}
+      <img src="{{obj.document.url}}" alt="Hooops! Could not load an image.">
+    {% else %}
+      <p>{{obj.content}}</p>
+    {% endif %}
+  </details>
 {% endblock %}

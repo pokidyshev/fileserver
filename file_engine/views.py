@@ -11,8 +11,10 @@ def upload(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
-            file = form.save()
-            return redirect('/%s' % encode(file.id))
+            file = form.save(commit=False)
+            file.content_type = file.document.file.content_type
+            file.save()
+            return redirect('/{}'.format(encode(file.id)))
     else:
         form = DocumentForm()
 
@@ -24,6 +26,7 @@ def upload(request):
 def details(request):
     encoded_id = request.path.split('/')[-1]
     obj = get_object_or_404(Document, pk=decode(encoded_id))
+
     return render(request, 'file_engine/details.html', {
         'obj': obj,
         'encoded_id': encoded_id,
