@@ -13,3 +13,13 @@ $ source myvenv/bin/activate
 (myvenv) $ python manage.py migrate
 (myvenv) $ python manage.py runserver
 ```
+in another terminal (schedule file destruction):
+```bash 
+$ crontab -e
+```
+replace contents with something like:
+```bash 
+SHELL=/bin/bash
+MAILTO=<username>
+* * * * * source ~/<path-to-repo>/fileserver/myenv/bin/activate && python ~/<path-to-repo>/fileserver/manage.py destruction
+```

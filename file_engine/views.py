@@ -1,6 +1,8 @@
 import os
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, Http404
+from django.utils import timezone
+from datetime import timedelta
 
 from .models import Document
 from .forms import DocumentForm
@@ -12,6 +14,11 @@ def upload(request):
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
             file = form.save(commit=False)
+            file.destruction_at = timezone.now() + timedelta(
+                days=int(request.POST['days']),
+                hours=int(request.POST['hours']),
+                minutes=int(request.POST['minutes'])
+            )
             file.content_type = file.document.file.content_type
             file.save()
             return redirect('/{}'.format(encode(file.id)))

@@ -4,6 +4,11 @@
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
+    <p>Expire in: 
+        {% include "file_engine/select.html" with n=5 name='days' %}
+        {% include "file_engine/select.html" with n=23 name='hours' %}
+        {% include "file_engine/select.html" with n=59 name='minutes' %}
+    </p>
     <button type="submit">Upload</button>
   </form>
 {% endblock %}

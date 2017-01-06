@@ -1,0 +1,9 @@
+<select name="{{ name }}">
+    <option>0</option>
+    {% with ''|center:n as range %}
+    {% for _ in range %}
+        <option>{{ forloop.counter }}</option>
+    {% endfor %}
+    {% endwith %}
+</select>
+<label>{{ name }}</label>
