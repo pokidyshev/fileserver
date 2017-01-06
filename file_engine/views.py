@@ -34,6 +34,9 @@ def details(request):
     encoded_id = request.path.split('/')[-1]
     obj = get_object_or_404(Document, pk=decode(encoded_id))
 
+    if obj.destruction_at <= timezone.now():
+        return render(request, 'file_engine/expired.html')
+
     return render(request, 'file_engine/details.html', {
         'obj': obj,
         'encoded_id': encoded_id,
@@ -44,6 +47,9 @@ def download(request):
     encoded_id = request.path.split('/')[-1]
     obj = get_object_or_404(Document, pk=decode(encoded_id))
     file_path = obj.document.path
+
+    if obj.destruction_at <= timezone.now():
+        return render(request, 'file_engine/expired.html')
 
     if not os.path.exists(file_path):
         raise Http404

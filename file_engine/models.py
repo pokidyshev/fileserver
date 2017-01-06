@@ -10,12 +10,12 @@ class Document(models.Model):
     # The files will be automatically uploaded to MEDIA_ROOT/documents/
     document = models.FileField(
         upload_to='documents/%Y/%m/%d/',
-        validators=[validate_type]
+        validators=[validate_type],
     )
     content_type = models.CharField(max_length=255, default='')
     uploaded_at = models.DateTimeField(auto_now_add=True)
     destruction_at = models.DateTimeField(
-        default=timezone.now() + timedelta(hours=1)
+        default=timezone.now() + timedelta(hours=1),
     )
 
     def content(self):
