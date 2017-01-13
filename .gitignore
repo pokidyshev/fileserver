@@ -90,8 +90,9 @@ ENV/
 # Rope project settings
 .ropeproject
 
-# Uploaded files
+# Uploaded and static files
 media/
+static/
 
 # Sqlite
 db.sqlite3

@@ -23,3 +23,8 @@ SHELL=/bin/bash
 MAILTO=<username>
 * * * * * source ~/<path-to-repo>/fileserver/myenv/bin/activate && python ~/<path-to-repo>/fileserver/manage.py destruction
 ```
+
+to run in production mode:
+```
+uwsgi --ini fileserver_uwsgi.ini
+```
