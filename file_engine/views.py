@@ -15,9 +15,7 @@ def upload(request):
         if form.is_valid():
             file = form.save(commit=False)
             file.destruction_at = timezone.now() + timedelta(
-                days=int(request.POST['days']),
-                hours=int(request.POST['hours']),
-                minutes=int(request.POST['minutes'])
+                minutes=int(form.cleaned_data['expire_in'])
             )
             file.content_type = file.document.file.content_type
             file.save()
