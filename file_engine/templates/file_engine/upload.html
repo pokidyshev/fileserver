@@ -1,10 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'file_engine/base.html' %}
 
 {% block content %}
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <p>Expire in: 
+    <p> 
+        <label>Expire in:</label>
         {% include "file_engine/select.html" with n=5 name='days' %}
         {% include "file_engine/select.html" with n=23 name='hours' %}
         {% include "file_engine/select.html" with n=59 name='minutes' %}
